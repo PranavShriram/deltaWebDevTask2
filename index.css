@@ -1,0 +1,64 @@
+.game-container
+{
+    display:flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.game-container__game-sidebar__button-set__pause
+{
+    background-color:white;
+    border:none;
+}
+
+.game-container__game-sidebar__button-set__play
+{
+    background-color:white;
+    border:none;
+}
+.game-container__game-sidebar__button-set
+{
+    margin-bottom:10px;
+}
+
+/* =========================================
+Leaderboard css
+========================================= */
+
+.game-container__leaderboard
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: 1px;
+    align-self: flex-start;
+}
+.game-container__leaderboard--header
+{
+    background-color:#1b1e24;
+    font-size: 23px;
+    color: #D5DDE5;
+    padding: 24px;
+    font-weight: 100;
+    height: 40px ;
+    border-right: 1px solid #343a45;
+    border-radius: 2px; 
+}
+
+.game-container__leaderboard__left
+{
+    border-radius:5px 0 0 0;
+
+}
+.game-container__leaderboard__right
+{
+    border-radius: 0 5px 0 0;
+}
+
+.game-container__leaderboard__element
+{
+    font-size: 23px;
+    color: #666B85;
+    background-color: #f8f8f8;
+    padding: 24px;
+    font-weight: 100;
+    height: 40px ;
+}

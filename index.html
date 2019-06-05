@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Ball Blast</title>
+        <link rel="stylesheet" href="index.css"> 
+        <script src = "cannon.js"></script>
+        <script src = "rocks.js"></script>
+        <script src = "game.js"></script>
+        <script src = "bullets.js"></script>
+    </head>
+    <body>
+      <div class = "game-container" >
+
+            <div class = "game-container__leaderboard">
+                    <div class = "game-container__leaderboard--header game-container__leaderboard__left">Player Name</div>
+                    <div class = "game-container__leaderboard--header game-container__leaderboard__right">Player Score</div>
+                    <div class = "game-container__leaderboard__element">Pranav</div>
+                    <div class = "game-container__leaderboard__element">10000</div>
+
+            </div> 
+      
+   
+        <canvas class = "game-container__game-canvas"></canvas>
+         
+        <div class = "game-container__game-sidebar">        
+            <div class ="game-container__game-sidebar__button-set">
+                
+                  <button class = "game-container__game-sidebar__button-set__pause"><img src = './assets/pause2.png'></button>
+                  <button class = "game-container__game-sidebar__button-set__play"><img src = './assets/play2.png'></button>
+                  
+             </div>
+     
+             <div class = "game-container__game-sidebar__scorecard">
+                 <div class = "game-container__game-sidebar__scorecard__header">Score</div>
+                 <div class = "game-container__game-sidebar__scorecard__score"></div>
+             </div>
+         </div> 
+        <script src ="index.js"></script>
+     </div>  
+    </body>
+</html>
