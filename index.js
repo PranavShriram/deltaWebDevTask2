@@ -184,12 +184,12 @@ loadImage('./assets/background.jpg').then( image =>{
 
                         for(var  i = 0;i < rockArray.length;i++)
                         {   
-                            if(rockArray[i].radius  <= 0)
+                            if(rockArray[i].radius  <= 20)
                             {   
-                               if(rockArray[i].strength/2 >= 20)
+                               if(rockArray[i].strength/2 >= 30)
                                { 
-                                 rockArray.push(new rocks(rockArray[i].x-10,rockArray[i].y+10,rockArray[i].strength/2,"left",rockArray[i].color));
-                                 rockArray.push(new rocks(rockArray[i].x+10,rockArray[i].y+10,rockArray[i].strength/2,"right",rockArray[i].color));
+                                 rockArray.push(new rocks(rockArray[i].x-10,rockArray[i].y+40,rockArray[i].strength/2,"left",rockArray[i].color));
+                                 rockArray.push(new rocks(rockArray[i].x+10,rockArray[i].y+40,rockArray[i].strength/2,"right",rockArray[i].color));
                                  rockArray.splice(i,1);
                                  game1.score += 100;
                                }
