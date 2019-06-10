@@ -1,4 +1,8 @@
 
+.game-container
+{
+  margin-left: 10%;
+}
 .bullet-image
 {
     display: none;
@@ -16,7 +20,7 @@ body{
 .game-container__game-sidebar__button-set
 {
     position: absolute;
-    left:500px;
+    left:650px;
     top:50px;
 }
 

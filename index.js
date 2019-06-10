@@ -29,12 +29,31 @@ loadImage('./assets/background.jpg').then( image =>{
             var currentPlayer = {name:name,score:0};
             var colorSet = ["#4cd137","#fbc531","#487eb0","#e84118","#00a8ff"];
             var rockDirection = 0;
+            var playerFlag = 0;
+            var playerIndex = -1;
             
             if(localStorage.getItem("leaderboardArray"))
             {
                 var leaderboardArray1 = JSON.parse(localStorage.getItem("leaderboardArray"));
-                leaderboardArray1.splice(9,leaderboardArray1.length);
-                leaderboardArray1.push(currentPlayer);
+                
+                for(var i = 0 ;i < leaderboardArray1.length;i++)
+                {
+                    if(leaderboardArray1[i].name == name)
+                      {
+                          playerIndex = i;
+                          playerFlag = 1;
+                          break;
+                      }
+                }
+                if(playerFlag)
+                {
+                  leaderboardArray1.splice(10,leaderboardArray1.length);
+                } 
+                else
+                {
+                    leaderboardArray1.splice(9,leaderboardArray1.length);
+                    leaderboardArray1.push(currentPlayer);
+                }
             }
             else
             {
@@ -138,12 +157,27 @@ loadImage('./assets/background.jpg').then( image =>{
                             } 
                         if(game1.time % 10 == 0)
                         {  
-                         
+                         if(!playerFlag)
+                         {
                            currentPlayer.score = game1.score; 
+                         }
+                         else
+                         {
+                            if(game1.score > leaderboardArray1[playerIndex].score) 
+                             leaderboardArray1[playerIndex].score = game1.score;
+                         }  
                            localStorage.setItem("leaderboardArray",JSON.stringify(leaderboardArray1));
                            leaderboardArray1.sort(function(a,b){
                                return b.score-a.score;
                            })
+                          if(playerFlag == 1) 
+                          {
+                           for(var i = 0;i < leaderboardArray1.length;i++)
+                           {
+                                if(leaderboardArray1[i].name == name)
+                                 playerIndex = i;
+                           }
+                          } 
                            renderLeaderboard(leaderboardArray1);
                            game1.score++;
                         //    game_scorecard_score.textContent = game1.score;
@@ -153,12 +187,12 @@ loadImage('./assets/background.jpg').then( image =>{
                            if(rockDirection == 0) 
                             {   
 
-                                var rock1 = new rocks(900,500,Math.floor((Math.random() * 20))+80,"left",colorSet[Math.floor((Math.random() * 4))]);
+                                var rock1 = new rocks(900,500,Math.floor((Math.random() * 20))+80,"left",colorSet[Math.floor((Math.random() * 4))],Math.floor((Math.random() * game1.time))+100);
                                 rockDirection = 1;
                             }    
                            else
                              {
-                                 var rock1 = new rocks(100,500,Math.floor((Math.random() * 20))+80,"right",colorSet[Math.floor((Math.random() * 4))]);
+                                 var rock1 = new rocks(100,500,Math.floor((Math.random() * 20))+80,"right",colorSet[Math.floor((Math.random() * 4))],Math.floor((Math.random() * game1.time))+100);
                                  rockDirection = 0;
                              }    
                           
@@ -184,17 +218,19 @@ loadImage('./assets/background.jpg').then( image =>{
 
                         for(var  i = 0;i < rockArray.length;i++)
                         {   
-                            if(rockArray[i].radius  <= 20)
+                            if(rockArray[i].health  <= 0)
                             {   
-                               if(rockArray[i].strength/2 >= 30)
+                               if(rockArray[i].initial_health/2 >= 30)
                                { 
-                                 rockArray.push(new rocks(rockArray[i].x-10,rockArray[i].y+40,rockArray[i].strength/2,"left",rockArray[i].color));
-                                 rockArray.push(new rocks(rockArray[i].x+10,rockArray[i].y+40,rockArray[i].strength/2,"right",rockArray[i].color));
+                                 rockArray.push(new rocks(rockArray[i].x-10,rockArray[i].y+40,rockArray[i].initial_radius/2,"left",rockArray[i].color,rockArray[i].initial_health/2));
+                                 rockArray.push(new rocks(rockArray[i].x+10,rockArray[i].y+40,rockArray[i].initial_radius/2,"right",rockArray[i].color,rockArray[i].initial_health/2));
                                  rockArray.splice(i,1);
                                  game1.score += 100;
                                }
                                else
                                {
+                                
+
                                 rockArray.splice(i,1);
                                 game1.score += 100;
                                } 
@@ -205,7 +241,6 @@ loadImage('./assets/background.jpg').then( image =>{
                         
 
                         //Collision detection of bullet with rock
-
                         for(var i = 0;i < rockArray.length;i++)
                         {  
                             var res = rockArray[i].collisionDetectionBullet(bulletArray);
@@ -214,7 +249,9 @@ loadImage('./assets/background.jpg').then( image =>{
                             {
                                  for(var j = 0;j < res.length;j++)
                                  { 
-                                   rockArray[i].radius -= 5;
+                                   if(rockArray[i].radius  > 30) 
+                                     rockArray[i].radius -= 5;
+                                   rockArray[i].health -= 5;  
                                    bulletArray.splice(res[j],1);
                                  }
                             }

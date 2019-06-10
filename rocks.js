@@ -1,12 +1,14 @@
 class rocks
 {
-    constructor(x,y,radius,direction,color)
+    constructor(x,y,radius,direction,color,health)
     {
         this.x = x;
         this.y = y;
         this.radius = radius;
+        this.health = health
         this.color = color;
-        this.strength = radius;
+        this.initial_health = health;
+        this.initial_radius = radius;
         if(direction == "left")
           this.vx = -3;
         else
@@ -43,7 +45,11 @@ class rocks
         ctx.textBaseline = 'middle';
         ctx.font = this.radius + 'px Righteous';
         ctx.fillStyle = "white";
-        ctx.fillText(Math.floor(this.radius*5), this.x,this.y);
+        if(this.health >= 1000)
+         ctx.fillText(Math.floor(this.health/1000)+"k", this.x,this.y);
+        else
+        ctx.fillText(Math.floor(this.health), this.x,this.y);
+  
         ctx.closePath();
 
       }
