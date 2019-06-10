@@ -2,39 +2,93 @@
     <head>
         <title>Ball Blast</title>
         <link rel="stylesheet" href="index.css"> 
-        <script src = "cannon.js"></script>
-        <script src = "rocks.js"></script>
-        <script src = "game.js"></script>
-        <script src = "bullets.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+     
+        
     </head>
     <body>
-      <div class = "game-container" >
+
+            <!-- <audio autoplay loop id="audio-example">  <source src="./assets/bgm.mp3">   Your browser does not support the audio tag.</audio>  -->
+                <audio loop = "loop" autoplay = "autoplay"  id = "my_audio">
+                        <source src="./assets/Game-Menu.mp3">
+                        Your browser does not support the audio element.
+                 </audio>
+                      
+      <img class = "bullet-image" src = "./assets/bullet3.png">
+      <div class = "main-menu">
+          <div class = "main-menu__image">
+              <img src = "./assets/main-menu__background.jpg" width = "500" height = "500">
+          </div>
+          <div class = "main-menu__options">
+              <div class = "main-menu__options__header">
+                  Ball Blast
+              </div>
+              <div class="group">      
+                    <input type="text" required class = "input_name">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Name</label>
+             </div>
+                    
+            <div class = "main-menu__options__buttonset">
+              <div class = "main-menu__options__buttonset__start">
+                  <button class = "main-menu__options__buttonset__start__button">
+                      Start Game
+                  </button>
+              </div>
+              <div class = " main-menu__options__buttonset__leaderboard">
+                  <button class = "main-menu__options__buttonset__leaderboard__button">View Leaderboard</button>
+              </div>
+            </div> 
+          </div>
+      </div>
+     
+     <div class = "leaderboard-through-mainmenu" style = "display: none;">
+      <div class = "display-leaderboard">
+            <div class = "display-leaderboard--header display-leaderboard__left">Player Name</div>
+            <div class = "display-leaderboard--header display-leaderboard__right">Player Score</div>
+      </div>
+       <button class = "display-leaderboard__button" >Back to Main menu</button>  
+     </div> 
+
+
+      <div class = "game-container" style = display:none>
 
             <div class = "game-container__leaderboard">
                     <div class = "game-container__leaderboard--header game-container__leaderboard__left">Player Name</div>
                     <div class = "game-container__leaderboard--header game-container__leaderboard__right">Player Score</div>
-                    <div class = "game-container__leaderboard__element">Pranav</div>
-                    <div class = "game-container__leaderboard__element">10000</div>
+                    <!-- <div class = "game-container__leaderboard__element">Pranav</div>
+                    <div class = "game-container__leaderboard__element">10000</div> -->
 
             </div> 
       
    
         <canvas class = "game-container__game-canvas"></canvas>
-         
-        <div class = "game-container__game-sidebar">        
+             
             <div class ="game-container__game-sidebar__button-set">
-                
-                  <button class = "game-container__game-sidebar__button-set__pause"><img src = './assets/pause2.png'></button>
-                  <button class = "game-container__game-sidebar__button-set__play"><img src = './assets/play2.png'></button>
-                  
+                 <img class = "game-container__game-sidebar__button-set__gamestate" src = './assets/pause.svg'>                  
              </div>
+          
      
-             <div class = "game-container__game-sidebar__scorecard">
-                 <div class = "game-container__game-sidebar__scorecard__header">Score</div>
-                 <div class = "game-container__game-sidebar__scorecard__score"></div>
-             </div>
-         </div> 
-        <script src ="index.js"></script>
-     </div>  
+     </div> 
+     <div class = "game-message" style = "display: none;">
+         <div class = "game-message__text">Game Over</div>
+         <div class = "game-message__buttonset">
+                <div class = "game-message__buttonset__restart">
+                    <button class = "game-message__buttonset__restart__button">
+                        Restart Game
+                    </button>
+                </div>
+                <div class = " game-message__buttonset__mainmenu">
+                    <button class = "game-message__buttonset__mainmenu__button">Main Menu</button>
+                </div>
+        </div> 
+     </div> 
+     <script src = "cannon.js"></script>
+     <script src = "rocks.js"></script>
+     <script src = "game.js"></script>
+     <script src = "bullets.js"></script>
+     <script src ="index.js"></script>
+
     </body>
 </html>

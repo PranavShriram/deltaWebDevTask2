@@ -1,24 +1,25 @@
+
+.bullet-image
+{
+    display: none;
+}
+body{
+    background: radial-gradient(#648880, #293f50);
+    font-family:'Righteous', cursive;
+
+}
 .game-container
 {
     display:flex;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.game-container__game-sidebar__button-set__pause
-{
-    background-color:white;
-    border:none;
-}
-
-.game-container__game-sidebar__button-set__play
-{
-    background-color:white;
-    border:none;
-}
 .game-container__game-sidebar__button-set
 {
-    margin-bottom:10px;
+    position: absolute;
+    left:500px;
+    top:50px;
 }
+
 
 /* =========================================
 Leaderboard css
@@ -62,3 +63,307 @@ Leaderboard css
     font-weight: 100;
     height: 40px ;
 }
+
+.display-leaderboard
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: 1px;
+    align-self: flex-start;
+    width:40%;
+    margin-left: 30%;
+}
+.display-leaderboard--header
+{
+    background-color:#1b1e24;
+    font-size: 23px;
+    color: #D5DDE5;
+    padding: 24px;
+    font-weight: 100;
+    height: 40px ;
+    border-right: 1px solid #343a45;
+    border-radius: 2px; 
+}
+
+.display-leaderboard__left
+{
+    border-radius:5px 0 0 0;
+
+}
+.display-leaderboard__right
+{
+    border-radius: 0 5px 0 0;
+}
+
+.display-leaderboard__element
+{
+    font-size: 23px;
+    color: #666B85;
+    background-color: #f8f8f8;
+    padding: 24px;
+    font-weight: 100;
+    height: 40px ;
+}
+
+.display-leaderboard__button
+{
+
+  background: white;
+  background:#ff5722;
+  margin-bottom: 20px;
+  font-size: 20px;
+  border:none;
+  color: white;   
+  padding: 20px;
+  border-radius: 5px;
+  width: 257px;
+  margin-left: 43%;
+}
+
+/* =========================================
+Main menu css
+========================================= */
+
+.main-menu
+{
+    display: flex;
+    margin-left: 20%;
+    margin-top: 150px;
+}
+
+.main-menu__options
+{
+    margin-left: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 514px;
+    background-color:white;
+    justify-content: space-between;
+     border-radius:5px; 
+}
+.main-menu__options__header
+{
+    font-size: 30px;
+    margin-bottom: 100px;
+    
+}
+.main-menu__options__buttonset
+{
+    display: flex;
+   
+}
+.main-menu__options__buttonset__start__button
+{  
+
+    background: white;
+    background:#ff5722;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border:none;
+    color: white;   
+    padding: 20px;
+    border-radius: 0 0 0 5px;
+    width: 257px;
+    
+}
+
+.main-menu__options__buttonset__start
+{
+    height:63px;
+}
+.main-menu__options__buttonset__leaderboard__button
+{
+    background: white;
+    background:#673ab7;
+    font-size: 20px;
+    border:none;
+    color: white;
+    width:257px;
+    padding:20px;
+    border-radius: 0 0 5px 0;
+}
+
+.main-menu__options__buttonset__leaderboard
+{
+    height: 63px;
+}   
+  
+
+.main-menu__options__input:after
+{
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 999;
+    height: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-position: 0% 0%;
+    background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+    background-size: 500% auto;
+    animation: gradient 3s linear infinite;
+} 
+
+
+.game-container__game-canvas
+{
+    align-self: flex-start;
+}
+
+.group 			  { 
+    position:relative; 
+    margin-bottom:45px;
+    margin-left: 100px; 
+  }
+
+  input 				{
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:300px;
+    border:none;
+    border-bottom:1px solid #757575;
+  }
+  input:focus 		{ outline:none; }
+
+  
+  /* LABEL ======================================= */
+  label 				 {
+    color:#999; 
+    font-size:18px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:10px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  
+  /* active state */
+  input:focus ~ label, input:valid ~ label 		{
+    top:-20px;
+    font-size:14px;
+    color:#5264AE;
+  }
+  
+  /* BOTTOM BARS ================================= */
+  .bar 	{ position:relative; display:block; width:300px; }
+  .bar:before, .bar:after 	{
+    content:'';
+    height:2px; 
+    width:0;
+    bottom:1px; 
+    position:absolute;
+    background:#5264AE; 
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  .bar:before {
+    left:50%;
+  }
+  .bar:after {
+    right:50%; 
+  }
+  
+  /* active state */
+  input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+  }
+  
+  /* HIGHLIGHTER ================================== */
+  .highlight {
+    position:absolute;
+    height:60%; 
+    width:100px; 
+    top:25%; 
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+  }
+
+
+/* =========================================
+Game message css
+========================================= */
+.game-message
+{
+    height: 200px;
+    background-color:white; 
+    margin-left: 30%;
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:514px;
+
+}
+.game-message__text
+{
+   font-size: 24px;
+   margin-bottom: 50px;
+   text-align: center;
+   margin-top: 40px;
+}
+.game-message__buttonset__restart__button
+{   
+    font-family: Arial, Helvetica, sans-serif;
+    background: white;
+    background:#ff5722;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border:none;
+    color: white;   
+    padding: 20px;
+    width: 257px;
+    margin-bottom: 0;
+}
+.game-message__buttonset
+{
+    height:63px;
+    display: flex;
+}
+.game-message__buttonset__mainmenu__button
+{
+    background: white;
+    background:#673ab7;
+    font-size: 20px;
+    border:none;
+    color: white;
+    width:257px;
+    padding:20px;
+}
+
+  /* active state */
+  input:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+  }
+  /* input:focus ~ img {
+      transform: rotate(0deg);
+    animation:rotate 0.3s ease;
+
+  } */
+  /* ANIMATIONS ================ */
+  @-webkit-keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg) }
+   to 	{ transform: rotate(20deg); }
+}
+  @-moz-keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
